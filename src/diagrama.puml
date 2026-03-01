@@ -1,0 +1,60 @@
+@startuml
+title Diagrama de Clases - Sistema Gestión de Arreglos
+
+skinparam classAttributeIconSize 0
+
+'======================
+' Clase Main
+'======================
+
+class Main {
+    + main(args : String[]) : void
+}
+
+'======================
+' Ventana Principal
+'======================
+
+class VentanaPrincipal {
+    - numerosManager : NumerosManager
+    - cadenasManager : CadenasManager
+    - txtNumero : JTextField
+    - txtCadena : JTextField
+    - areaResultado : JTextArea
+    + VentanaPrincipal()
+    - crearBoton(texto : String) : JButton
+}
+
+'======================
+' Managers
+'======================
+
+class NumerosManager {
+    - numeros : double[]
+    - indice : int
+    + NumerosManager(tam : int)
+    + agregarNumero(n : double) : void
+    + mostrarNumeros() : String
+}
+
+class CadenasManager {
+    - matriz : String[][]
+    - fila : int
+    - columna : int
+    + CadenasManager(filas : int, columnas : int)
+    + agregarCadena(c : String) : void
+    + mostrarCadenas() : String
+}
+
+'======================
+' Relaciones
+'======================
+
+' Main crea la ventana (dependencia)
+Main --> VentanaPrincipal : crea
+
+' Composición (la ventana crea y controla los managers)
+VentanaPrincipal "1" *-- "1" NumerosManager
+VentanaPrincipal "1" *-- "1" CadenasManager
+
+@enduml

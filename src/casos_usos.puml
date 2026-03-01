@@ -1,0 +1,15 @@
+@startuml casos_usos.png
+
+top to bottom direction
+
+actor Usuario
+
+rectangle "Sistema Gestión de Arreglos" {
+
+    (Agregar Número) --> (Agregar Cadena)
+    (Agregar Cadena) --> (Mostrar Datos)
+}
+
+Usuario --> (Agregar Número)
+
+@enduml
